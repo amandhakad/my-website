@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.http import HttpResponse
 
 from .models import Post
@@ -15,4 +14,7 @@ class PostsView(generic.ListView):
 	context_object_name = 'posts'
 
 	def get_queryset(self):
-		return Post.objects.all()
+		return Post.objects.filter(status='1')
+
+class SinglePostView(generic.DetailView):
+	model = Post
